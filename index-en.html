@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>GabuMza Studio - Digital Agency</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,FILL@0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#ffb690",
+                        "tertiary": "#505f76",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed-variant": "#3f465c",
+                        "primary-fixed": "#ffdbca",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-surface-variant": "#584237",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed-dim": "#bec6e0",
+                        "on-secondary-fixed": "#131b2e",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-surface": "#2d3133",
+                        "outline-variant": "#e0c0b1",
+                        "on-primary-container": "#5f2600",
+                        "surface-tint": "#9d4400",
+                        "secondary": "#565e74",
+                        "surface": "#f7f9fb",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary-container": "#29384d",
+                        "primary-fixed-dim": "#ffb690",
+                        "tertiary-fixed": "#d3e4fe",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-background": "#191c1e",
+                        "secondary-fixed": "#dae2fd",
+                        "secondary-container": "#dae2fd",
+                        "on-primary-fixed-variant": "#783200",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#5c647a",
+                        "outline": "#8c7265",
+                        "tertiary-container": "#92a2ba",
+                        "primary": "#9d4400",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-fixed": "#331100",
+                        "background": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "primary-container": "#ff7a21",
+                        "on-tertiary-fixed": "#0b1c30"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "section-padding": "80px",
+                        "container-max": "1280px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Manrope"],
+                        "headline-xl": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "label-sm": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "700" }],
+                        "headline-xl": ["72px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-sm": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 30%, rgba(255, 122, 33, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes entrance {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float 8s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .animate-float-slow {
+            animation: float 10s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        .reveal {
+            opacity: 0;
+            animation: entrance 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+
+        .parallax-container {
+            perspective: 1000px;
+        }
+
+        .layer {
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+        }
+
+        /* Responsive overrides */
+        @media (max-width: 1024px) {
+            .text-headline-xl {
+                font-size: 40px !important;
+                line-height: 1.15 !important;
+            }
+            .text-headline-lg {
+                font-size: 32px !important;
+                line-height: 1.2 !important;
+            }
+            .text-body-lg {
+                font-size: 16px !important;
+                line-height: 1.5 !important;
+            }
+        }
+        @media (max-width: 640px) {
+            .text-headline-xl {
+                font-size: 32px !important;
+                line-height: 1.2 !important;
+            }
+            .text-headline-lg {
+                font-size: 26px !important;
+                line-height: 1.25 !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-background font-body-md text-on-background antialiased overflow-x-hidden">
+    <!-- TopNavBar -->
+    <header class="sticky top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <nav class="flex justify-between items-center max-w-7xl mx-auto px-6 md:px-8 py-4">
+            <a href="#" class="flex items-center">
+                <img src="logo_en.png" alt="GabuMza Studio Logo"
+                    class="h-12 lg:h-[84px] lg:scale-[1.7] origin-left w-auto object-contain transition-all duration-300">
+            </a>
+            <div class="hidden lg:flex items-center gap-8 font-manrope text-base font-medium">
+                <a class="text-slate-600 hover:text-orange-500 transition-colors duration-300" href="#">Home</a>
+                <a class="text-slate-600 hover:text-orange-500 transition-colors duration-300" href="servicios-en.html">Services</a>
+                <a class="text-slate-600 hover:text-orange-500 transition-colors duration-300" href="designs-en.html">Designs</a>
+                <a class="text-slate-600 hover:text-orange-500 transition-colors duration-300" href="preguntas-frecuentes-en.html">Q&amp;A</a>
+            </div>
+            <div class="flex items-center gap-5">
+                <div class="hidden lg:flex items-center gap-3">
+                    <span class="text-slate-400 font-bold text-sm">ES</span>
+                    <button type="button" onclick="window.location.href='index (create with stitch-comerciable).html'"
+                        class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-slate-900 transition-colors duration-200 ease-in-out hover:bg-slate-800 focus:outline-none"
+                        role="switch" aria-checked="true">
+                        <span aria-hidden="true"
+                            class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-sm ring-0 transition duration-200 ease-in-out translate-x-5"></span>
+                    </button>
+                    <span class="text-slate-900 font-bold text-sm">EN</span>
+                </div>
+                <div class="hidden lg:block h-6 w-px bg-slate-200"></div>
+                <button onclick="window.open('https://wa.me/50763160922?text=Buenas%2C%20encontr%C3%A9%20su%20agencia%20y%20me%20interesa%20desarrollar%20una%20p%C3%A1gina%20web%20profesional%20para%20mi%20negocio.', '_blank')"
+                    class="hidden sm:flex bg-[#25D366] text-white px-7 py-2.5 rounded-full font-manrope text-[15px] font-bold active:scale-95 transition-transform hover:bg-[#20b858] items-center gap-2">
+                    <svg class="h-4 w-4" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.001 3.999c-6.627 0-12 5.373-12 12 0 2.115.555 4.124 1.53 5.857L3.5 28.5l6.727-2.043c1.635.888 3.466 1.403 5.426 1.403 6.627 0 12-5.373 12-12s-5.373-12-12-12zm6.235 16.62c-.237.665-1.437 1.233-2.416 1.369-.657.099-1.442.203-2.083-.098-.265-.128-.516-.571-.537-1.084-.022-.511.037-.995.29-1.215.15-.139.314-.371.342-.507.03-.135.317-.934-.025-1.047-.342-.113-.888.402-1.103.757-.215.354-1.384 2.015-1.468 2.05-.084.033-.567-.334-.489-.666.076-.332-.575-.162-.7-.245-.128-.082-.19-.271-.134-.415.248-.594 1.45-1.417 1.65-2.181.2-.763.547-1.4.466-1.874-.08-.474-2.261-1.761-3.643-1.761-1.208 0-2.593-.395-3.498 1.21-.924 1.631-1.726 3.614-1.726 5.224 0 2.268 1.257 3.875 2.371 3.875 1.192 0 2.067-.877 5.086-.811 2.474.047 4.252 3.087 3.45 3.535z"/>
+                    </svg>
+                    <span>Contact</span>
+                </button>
+            </div>
+            <!-- Mobile Menu Toggle -->
+            <button onclick="toggleMobileMenu()" aria-label="Open Menu" class="lg:hidden text-on-surface p-2 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Drawer (Hidden by default) -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-white/95 backdrop-blur-lg translate-x-full transition-transform duration-300 ease-in-out flex flex-col p-8 lg:hidden overflow-y-auto">
+        <div class="flex justify-between items-center mb-12">
+            <a href="#" class="flex items-center" onclick="toggleMobileMenu()">
+                <img src="logo_en.png" alt="GabuMza Studio Logo" class="h-12 w-auto object-contain">
+            </a>
+            <button onclick="toggleMobileMenu()" class="text-slate-900 p-2 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-6 text-xl font-semibold text-slate-800 mb-12">
+            <a class="hover:text-orange-500 transition-colors py-2 border-b border-slate-100" href="#" onclick="toggleMobileMenu()">Home</a>
+            <a class="hover:text-orange-500 transition-colors py-2 border-b border-slate-100" href="servicios-en.html" onclick="toggleMobileMenu()">Services</a>
+            <a class="hover:text-orange-500 transition-colors py-2 border-b border-slate-100" href="designs-en.html" onclick="toggleMobileMenu()">Designs</a>
+            <a class="hover:text-orange-500 transition-colors py-2 border-b border-slate-100" href="preguntas-frecuentes-en.html" onclick="toggleMobileMenu()">Q&amp;A</a>
+        </nav>
+        <!-- Language Switcher for Mobile -->
+        <div class="flex items-center gap-4 mb-8">
+            <span class="text-slate-400 font-bold text-sm">ES</span>
+            <button type="button" onclick="window.location.href='index (create with stitch-comerciable).html'"
+                class="relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-slate-900 transition-colors duration-200 ease-in-out focus:outline-none"
+                role="switch" aria-checked="true">
+                <span aria-hidden="true"
+                    class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-sm ring-0 transition duration-200 ease-in-out translate-x-5"></span>
+            </button>
+            <span class="text-slate-900 font-bold text-sm">EN</span>
+        </div>
+        <button onclick="window.open('https://wa.me/50763160922?text=Buenas%2C%20encontr%C3%A9%20su%20agencia%20y%20me%20interesa%20desarrollar%20una%20p%C3%A1gina%20web%20profesional%20para%20mi%20negocio.', '_blank')"
+            class="w-full bg-[#25D366] text-white py-4 rounded-full font-bold active:scale-95 transition-transform hover:bg-[#20b858] flex items-center justify-center gap-2 text-base shadow-lg shadow-green-100">
+            <svg class="h-5 w-5" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16.001 3.999c-6.627 0-12 5.373-12 12 0 2.115.555 4.124 1.53 5.857L3.5 28.5l6.727-2.043c1.635.888 3.466 1.403 5.426 1.403 6.627 0 12-5.373 12-12s-5.373-12-12-12zm6.235 16.62c-.237.665-1.437 1.233-2.416 1.369-.657.099-1.442.203-2.083-.098-.265-.128-.516-.571-.537-1.084-.022-.511.037-.995.29-1.215.15-.139.314-.371.342-.507.03-.135.317-.934-.025-1.047-.342-.113-.888.402-1.103.757-.215.354-1.384 2.015-1.468 2.05-.084.033-.567-.334-.489-.666.076-.332-.575-.162-.7-.245-.128-.082-.19-.271-.134-.415.248-.594 1.45-1.417 1.65-2.181.2-.763.547-1.4.466-1.874-.08-.474-2.261-1.761-3.643-1.761-1.208 0-2.593-.395-3.498 1.21-.924 1.631-1.726 3.614-1.726 5.224 0 2.268 1.257 3.875 2.371 3.875 1.192 0 2.067-.877 5.086-.811 2.474.047 4.252 3.087 3.45 3.535z"/>
+            </svg>
+            <span>Contact</span>
+        </button>
+    </div>
+    <main class="hero-gradient overflow-hidden">
+        <!-- Hero Section -->
+        <section class="max-w-7xl mx-auto px-8 py-20 md:py-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Content -->
+            <div class="flex flex-col gap-8">
+                <h1 class="font-headline-xl text-headline-xl text-slate-950 max-w-xl">
+                    We build websites that turn visitors into <span
+                        class="text-primary-container">clients.</span>
+                </h1>
+                <p class="font-body-lg text-body-lg text-secondary max-w-lg">
+                    We build fast, modern, and strategic websites for brands that want to stand out online and
+                    grow with confidence.
+                </p>
+                <div class="flex flex-wrap gap-4 mt-4">
+                    <button onclick="window.location.href='contact-en.html'"
+                        class="bg-primary-container text-on-primary-container px-8 py-4 rounded-full font-bold flex items-center gap-2 shadow-lg shadow-orange-200 active:scale-95 transition-all">
+                        Start Your Project
+                    </button>
+                    <button
+                        onclick="window.location.href='designs-en.html'"
+                        class="bg-white border-2 border-slate-200 text-slate-900 px-8 py-4 rounded-full font-bold hover:border-slate-300 active:scale-95 transition-all cursor-pointer">
+                        View Portfolio
+                    </button>
+                </div>
+                <div class="flex flex-wrap gap-4 mt-8">
+                    <div class="flex items-center gap-2 bg-orange-100 rounded-full pr-4 pl-1.5 py-1.5 text-slate-700">
+                        <img src="Check.png" alt="check" class="w-6 h-6 object-contain">
+                        <span class="font-manrope text-sm font-semibold">Custom websites</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-orange-100 rounded-full pr-4 pl-1.5 py-1.5 text-slate-700">
+                        <img src="Check.png" alt="check" class="w-6 h-6 object-contain">
+                        <span class="font-manrope text-sm font-semibold">Landing pages</span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-orange-100 rounded-full pr-4 pl-1.5 py-1.5 text-slate-700">
+                        <img src="Check.png" alt="check" class="w-6 h-6 object-contain">
+                        <span class="font-manrope text-sm font-semibold">E-commerce</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Right Visuals - Dynamic Animated Composition -->
+            <div class="relative w-full aspect-square flex items-center justify-center parallax-container"
+                id="parallax-scene">
+                <!-- Background Blob -->
+                <div class="layer absolute w-[120%] h-[120%] rounded-full bg-primary-container/5 blur-3xl -z-10"
+                    data-depth="0.02"></div>
+                <!-- Mid-ground: Desktop Mockup -->
+                <div class="layer relative z-10 w-full max-w-[560px] reveal delay-100" data-depth="0.05">
+                    <div
+                        class="bg-white rounded-2xl shadow-2xl border border-slate-200/50 overflow-hidden animate-float">
+                        <div class="bg-slate-50 border-b border-slate-100 px-4 py-3 flex items-center gap-2">
+                            <div class="flex gap-1.5">
+                                <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+                            </div>
+                            <div class="mx-auto bg-slate-200 h-1.5 w-24 rounded-full"></div>
+                        </div>
+                        <div class="p-6 h-[340px] bg-slate-50 flex flex-col gap-6">
+                            <div class="flex gap-4 items-center">
+                                <div class="w-12 h-12 rounded-lg bg-orange-100"></div>
+                                <div class="flex-1 space-y-2">
+                                    <div class="w-1/3 h-4 bg-slate-200 rounded"></div>
+                                    <div class="w-1/2 h-2 bg-slate-100 rounded"></div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4">
+                                <div
+                                    class="h-24 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center">
+                                    <div class="w-12 h-1 bg-orange-100 rounded-full"></div>
+                                </div>
+                                <div class="h-24 bg-white rounded-xl shadow-sm border border-slate-100"></div>
+                                <div class="h-24 bg-white rounded-xl shadow-sm border border-slate-100"></div>
+                            </div>
+                            <div class="mt-auto flex justify-between items-end">
+                                <div class="space-y-2 w-full">
+                                    <div class="w-2/3 h-2 bg-slate-100 rounded"></div>
+                                    <div class="w-full h-2 bg-slate-100 rounded"></div>
+                                </div>
+                                <div class="w-24 h-10 bg-primary-container rounded-lg shadow-lg shadow-orange-100">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Foreground: Mobile Phone -->
+                <div class="layer absolute bottom-[10%] left-0 sm:-left-4 md:-left-8 z-30 w-24 sm:w-32 md:w-44 reveal delay-300"
+                    data-depth="0.15">
+                    <div
+                        class="aspect-[9/19] bg-slate-900 rounded-[2.5rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden ring-4 ring-white animate-float-delayed">
+                        <div class="h-full bg-white relative">
+                            <div class="absolute top-0 inset-x-0 h-5 bg-slate-900 rounded-b-xl mx-auto w-16 z-40"></div>
+                            <div class="p-4 pt-8 space-y-4">
+                                <div class="w-10 h-10 rounded-full bg-orange-500 mx-auto"></div>
+                                <div class="w-full h-2 bg-slate-100 rounded"></div>
+                                <div class="w-full h-2 bg-slate-100 rounded"></div>
+                                <div class="w-2/3 h-2 bg-slate-100 rounded mx-auto"></div>
+                                <div class="w-full h-24 bg-slate-50 rounded-xl"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- UI Card: Performance -->
+                <div class="layer absolute top-[15%] right-0 sm:-right-4 md:-right-8 z-40 w-44 sm:w-56 md:w-64 reveal delay-200" data-depth="0.12">
+                    <div class="bg-slate-900 p-5 rounded-2xl shadow-2xl animate-float-slow border border-slate-800">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="relative w-12 h-12 flex items-center justify-center">
+                                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                    <path class="text-slate-700" stroke-width="3" stroke="currentColor" fill="none"
+                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="text-green-500" stroke-dasharray="99, 100" stroke-width="3"
+                                        stroke-linecap="round" stroke="currentColor" fill="none"
+                                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <span class="absolute text-white font-bold text-sm">99</span>
+                            </div>
+                            <div>
+                                <p class="text-[11px] font-bold text-white uppercase tracking-wider">Performance</p>
+                                <p class="text-[10px] text-green-400">Excellent</p>
+                            </div>
+                        </div>
+                        <div class="space-y-2.5">
+                            <div>
+                                <div class="flex justify-between text-[9px] mb-1">
+                                    <span class="text-slate-400">Accessibility</span>
+                                    <span class="text-white font-medium">100%</span>
+                                </div>
+                                <div class="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="w-full h-full bg-green-500 rounded-full"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-[9px] mb-1">
+                                    <span class="text-slate-400">SEO</span>
+                                    <span class="text-white font-medium">100%</span>
+                                </div>
+                                <div class="w-full h-1 bg-slate-800 rounded-full overflow-hidden">
+                                    <div class="w-full h-full bg-green-500 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- UI Card: Chart -->
+                <div class="layer absolute bottom-[20%] right-2 sm:right-0 z-20 w-28 sm:w-40 md:w-48 reveal delay-400" data-depth="0.08">
+                    <div class="bg-white p-5 rounded-2xl shadow-xl border border-slate-100 animate-float-delayed">
+                        <div class="flex justify-between items-center mb-4">
+                            <span
+                                class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Visitors</span>
+                            <span class="text-xs font-bold text-green-500">+24%</span>
+                        </div>
+                        <div class="flex items-end gap-1.5 h-16">
+                            <div class="flex-1 bg-slate-100 rounded-t-sm h-[40%] hover:bg-orange-100 transition-colors">
+                            </div>
+                            <div class="flex-1 bg-slate-100 rounded-t-sm h-[60%] hover:bg-orange-100 transition-colors">
+                            </div>
+                            <div class="flex-1 bg-orange-400 rounded-t-sm h-[90%] shadow-md shadow-orange-200"></div>
+                            <div class="flex-1 bg-slate-100 rounded-t-sm h-[50%] hover:bg-orange-100 transition-colors">
+                            </div>
+                            <div class="flex-1 bg-slate-100 rounded-t-sm h-[70%] hover:bg-orange-100 transition-colors">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Pricing Section -->
+    <section class="max-w-7xl mx-auto px-8 py-20" id="pricing">
+        <div class="text-center mb-16">
+            <h2 class="font-headline-lg text-headline-lg text-slate-950 mb-4">Our Plans</h2>
+            <p class="font-body-lg text-secondary max-w-2xl mx-auto">Plans designed to boost your digital presence. Take advantage of our special launch prices.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1: Landing Page -->
+            <div
+                class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl transition-shadow flex flex-col h-full">
+                <div class="mb-6 h-32 flex items-center justify-center bg-slate-50 rounded-2xl overflow-hidden">
+                    <div
+                        class="w-24 h-40 bg-white border border-slate-200 rounded-t-lg shadow-inner mt-10 relative overflow-hidden">
+                        <div class="absolute top-2 left-2 right-2 h-1 bg-primary-container/20 rounded"></div>
+                        <div class="absolute top-5 left-2 w-1/2 h-1 bg-slate-100 rounded"></div>
+                        <div class="absolute top-10 inset-x-2 bottom-0 bg-slate-50 p-2 space-y-2">
+                            <div class="w-full h-10 bg-white rounded"></div>
+                            <div class="w-full h-10 bg-white rounded"></div>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="font-headline-md text-2xl text-slate-900 mb-2">Landing / Basic OnePage</h3>
+                <div class="mb-6">
+                    <span class="text-slate-400 line-through text-lg font-medium">$50-100</span>
+                    <div class="text-4xl font-extrabold text-primary-container">FREE</div>
+                </div>
+                <p class="text-slate-600 font-body-md mb-6 flex-grow">Take advantage of our launch phase and get your website for free.</p>
+                <div class="pt-6 border-t border-slate-100">
+                    <p class="text-[11px] text-slate-400 uppercase tracking-widest font-bold mb-4">Does not include domain or hosting</p>
+                    <button onclick="window.location.href='contact-en.html'"
+                        class="w-full py-4 rounded-xl border-2 border-primary-container text-primary-container font-bold hover:bg-primary-container hover:text-white transition-colors">
+                        I want it for free
+                    </button>
+                </div>
+            </div>
+            <!-- Card 2: Professional Site -->
+            <div
+                class="bg-white rounded-3xl p-8 border-2 border-primary-container shadow-xl flex flex-col h-full relative">
+                <div
+                    class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-container text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+                    Most Popular</div>
+                <div class="mb-6 h-32 flex items-center justify-center bg-orange-50 rounded-2xl overflow-hidden">
+                    <div class="flex gap-2 items-end">
+                        <div class="w-12 h-16 bg-white border border-slate-200 rounded-t-lg shadow-sm"></div>
+                        <div class="w-16 h-24 bg-white border border-primary-container/30 rounded-t-lg shadow-md"></div>
+                        <div class="w-12 h-16 bg-white border border-slate-200 rounded-t-lg shadow-sm"></div>
+                    </div>
+                </div>
+                <h3 class="font-headline-md text-2xl text-slate-900 mb-2">Professional website</h3>
+                <p class="text-xs text-slate-400 mb-2 font-bold uppercase">(5-8 sections)</p>
+                <div class="mb-6">
+                    <span class="text-slate-400 line-through text-lg font-medium">$100-200</span>
+                    <div class="text-4xl font-extrabold text-primary-container">FREE</div>
+                </div>
+                <p class="text-slate-600 font-body-md mb-6 flex-grow">Take advantage of our launch phase and get your website for free.</p>
+                <div class="pt-6 border-t border-slate-100">
+                    <p class="text-[11px] text-slate-400 uppercase tracking-widest font-bold mb-4">Does not include domain or hosting</p>
+                    <button onclick="window.location.href='contact-en.html'"
+                        class="w-full py-4 rounded-xl bg-primary-container text-white font-bold shadow-lg shadow-orange-200 hover:scale-[1.02] active:scale-95 transition-all">
+                        Get started now
+                    </button>
+                </div>
+            </div>
+            <!-- Card 3: E-commerce (Disabled) -->
+            <div class="bg-slate-50/50 rounded-3xl p-8 border border-slate-200 flex flex-col h-full opacity-75">
+                <div class="mb-6 h-56 flex items-center justify-center rounded-2xl overflow-hidden bg-slate-100/50">
+                    <img src="trabajando_en_ello.jpg" alt="Trabajando en ello" class="w-full h-full object-contain">
+                </div>
+                <h3 class="font-headline-md text-2xl text-slate-400 mb-4">Online stores</h3>
+                <p class="text-slate-500 font-body-md mb-8 italic">We are working on the development of our online store service to take your business to the next level.</p>
+                <div class="mt-auto">
+                    <button class="w-full py-4 rounded-xl bg-slate-200 text-slate-400 font-bold cursor-not-allowed"
+                        disabled="">
+                        Coming Soon
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="w-full py-12 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-8 flex justify-center items-center">
+        </div>
+    </footer>
+    <script>
+        // Parallax Effect
+        document.addEventListener('mousemove', (e) => {
+            const scene = document.getElementById('parallax-scene');
+            const layers = scene.querySelectorAll('.layer');
+
+            const mouseX = e.clientX / window.innerWidth - 0.5;
+            const mouseY = e.clientY / window.innerHeight - 0.5;
+
+            layers.forEach(layer => {
+                const depth = parseFloat(layer.getAttribute('data-depth'));
+                const moveX = mouseX * depth * 200;
+                const moveY = mouseY * depth * 200;
+
+                layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+            });
+        });
+
+        // Reset parallax on mouse leave
+        document.addEventListener('mouseleave', () => {
+            const layers = document.querySelectorAll('.layer');
+            layers.forEach(layer => {
+                layer.style.transform = `translate3d(0, 0, 0)`;
+            });
+        });
+
+        // Toggle Mobile Menu Drawer
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('translate-x-full');
+                if (menu.classList.contains('translate-x-full')) {
+                    document.body.classList.remove('overflow-hidden');
+                } else {
+                    document.body.classList.add('overflow-hidden');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

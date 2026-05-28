@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkWeb - Web Design Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px);
+        }
+
+        .hero-gradient-blob {
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+        }
+
+        @keyframes float-subtle {
+            0% {
+                transform: translateY(0px) rotate(var(--tw-rotate, 0deg));
+            }
+
+            50% {
+                transform: translateY(-8px) rotate(var(--tw-rotate, 0deg));
+            }
+
+            100% {
+                transform: translateY(0px) rotate(var(--tw-rotate, 0deg));
+            }
+        }
+
+        @keyframes float-slower {
+            0% {
+                transform: translateY(0px) rotate(var(--tw-rotate, 0deg));
+            }
+
+            50% {
+                transform: translateY(-12px) rotate(var(--tw-rotate, 0deg));
+            }
+
+            100% {
+                transform: translateY(0px) rotate(var(--tw-rotate, 0deg));
+            }
+        }
+
+        .animate-float-subtle {
+            animation: float-subtle 6s ease-in-out infinite;
+        }
+
+        .animate-float-slower {
+            animation: float-slower 8s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        /* Custom selection color */
+        ::selection {
+            background-color: rgba(249, 115, 22, 0.2);
+            color: #0f172a;
+        }
+    </style>
+</head>
+
+<body class="bg-[#FAFAFA] text-slate-800 antialiased relative overflow-x-hidden min-h-screen flex flex-col">
+
+    <!-- Subtle Background Elements -->
+    <div class="absolute inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+    <div
+        class="absolute top-0 right-0 w-[800px] h-[800px] hero-gradient-blob -translate-y-1/4 translate-x-1/4 pointer-events-none z-0">
+    </div>
+    <div
+        class="absolute bottom-0 left-0 w-[600px] h-[600px] hero-gradient-blob translate-y-1/4 -translate-x-1/4 pointer-events-none z-0">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="relative z-50 w-full border-b border-slate-200/60 bg-white/50 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center group">
+                <img src="sparkweb_logo.png" alt="SparkWeb"
+                    class="h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-200">
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+                <a href="#" class="hover:text-slate-900 transition-colors">
+                    <span class="lang-es">Servicios</span><span class="lang-en hidden">Services</span>
+                </a>
+                <a href="#" class="hover:text-slate-900 transition-colors">
+                    <span class="lang-es">Nuestro Trabajo</span><span class="lang-en hidden">Our Work</span>
+                </a>
+                <a href="#" class="hover:text-slate-900 transition-colors">
+                    <span class="lang-es">Proceso</span><span class="lang-en hidden">Process</span>
+                </a>
+                <a href="#" class="hover:text-slate-900 transition-colors">
+                    <span class="lang-es">Nosotros</span><span class="lang-en hidden">About</span>
+                </a>
+            </div>
+
+            <!-- CTA & Language Toggle -->
+            <div class="flex items-center gap-5">
+                <!-- Custom Language Toggle -->
+                <div class="flex items-center gap-2 border-r border-slate-200/80 pr-5">
+                    <span class="text-xs font-semibold text-slate-900 transition-colors cursor-pointer" id="label-es"
+                        onclick="if(document.getElementById('lang-thumb').classList.contains('translate-x-4')) toggleLang()">ES</span>
+                    <button onclick="toggleLang()"
+                        class="relative w-9 h-5 bg-slate-200/80 hover:bg-slate-300/80 rounded-full outline-none transition-colors border border-slate-300/50"
+                        aria-label="Toggle language">
+                        <span id="lang-thumb"
+                            class="absolute top-[1px] left-[1px] w-4 h-4 bg-white rounded-full shadow-sm transition-transform duration-300 ease-out border border-slate-200/50"></span>
+                    </button>
+                    <span class="text-xs font-medium text-slate-400 transition-colors cursor-pointer" id="label-en"
+                        onclick="if(!document.getElementById('lang-thumb').classList.contains('translate-x-4')) toggleLang()">EN</span>
+                </div>
+
+                <a href="#"
+                    class="hidden lg:inline-flex text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
+                    <span class="lang-es">Acceso Clientes</span><span class="lang-en hidden">Client Login</span>
+                </a>
+                <a href="#"
+                    class="inline-flex items-center justify-center h-10 px-5 text-sm font-medium text-white bg-slate-900 rounded-full hover:bg-slate-800 transition-all shadow-sm">
+                    <span class="lang-es">Agendar Llamada</span><span class="lang-en hidden">Book a Call</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Hero Section -->
+    <main class="relative z-10 flex-grow flex items-center pt-16 pb-24 lg:pt-24 lg:pb-32">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
+
+                <!-- Left Column: Content -->
+                <div class="lg:col-span-6 flex flex-col items-start text-left relative z-20">
+
+                    <!-- Eyebrow Badge -->
+                    <div
+                        class="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-white border border-slate-200/60 shadow-sm mb-8 animate-fade-in-up">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+                        </span>
+                        <span class="text-xs font-medium text-slate-600 tracking-wide uppercase">
+                            <span class="lang-es">Agencia Web Premiada</span><span class="lang-en hidden">Award-winning
+                                Web Agency</span>
+                        </span>
+                    </div>
+
+                    <!-- Headline -->
+                    <h1
+                        class="text-5xl sm:text-6xl lg:text-[4.5rem] leading-[1.05] font-semibold text-slate-900 tracking-tight mb-6">
+                        <span class="lang-es block">Creamos sitios web que convierten visitantes en <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400">clientes.</span></span>
+                        <span class="lang-en hidden block">We build websites that turn visitors into <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-400">clients.</span></span>
+                    </h1>
+
+                    <!-- Subtext -->
+                    <p class="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-xl mb-10 font-normal">
+                        <span class="lang-es">SparkWeb crea sitios web rápidos, modernos y estratégicos para marcas que
+                            desean destacar en línea y crecer con confianza.</span>
+                        <span class="lang-en hidden">SparkWeb creates fast, modern, and strategic websites for brands
+                            that want to stand out online and grow with confidence.</span>
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                        <button
+                            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-14 px-8 bg-orange-500 text-white rounded-xl font-medium hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20 group">
+                            <span class="lang-es">Inicia tu Proyecto</span><span class="lang-en hidden">Start Your
+                                Project</span>
+                            <iconify-icon icon="solar:arrow-right-linear" width="1.2em"
+                                class="group-hover:translate-x-1 transition-transform"
+                                stroke-width="1.5"></iconify-icon>
+                        </button>
+                        <button
+                            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-14 px-8 bg-white text-slate-800 border border-slate-200 rounded-xl font-medium hover:bg-slate-50 hover:border-slate-300 transition-all shadow-sm group">
+                            <iconify-icon icon="solar:play-circle-linear" width="1.2em"
+                                class="text-slate-400 group-hover:text-orange-500 transition-colors"
+                                stroke-width="1.5"></iconify-icon>
+                            <span class="lang-es">Ver Portafolio</span><span class="lang-en hidden">View
+                                Portfolio</span>
+                        </button>
+                    </div>
+
+                    <!-- Trust Line -->
+                    <div class="mt-12 pt-8 border-t border-slate-200/60 w-full">
+                        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-slate-500">
+                            <span class="flex items-center gap-2">
+                                <iconify-icon icon="solar:check-circle-linear" class="text-orange-500"
+                                    width="1.2em"></iconify-icon>
+                                <span class="lang-es">Sitios web a medida</span><span class="lang-en hidden">Custom
+                                    websites</span>
+                            </span>
+                            <span class="flex items-center gap-2">
+                                <iconify-icon icon="solar:check-circle-linear" class="text-orange-500"
+                                    width="1.2em"></iconify-icon>
+                                <span class="lang-es">Landing pages</span><span class="lang-en hidden">Landing
+                                    pages</span>
+                            </span>
+                            <span class="flex items-center gap-2">
+                                <iconify-icon icon="solar:check-circle-linear" class="text-orange-500"
+                                    width="1.2em"></iconify-icon>
+                                <span class="lang-es">E-commerce</span><span class="lang-en hidden">E-commerce</span>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Visual Composition -->
+                <div
+                    class="lg:col-span-6 relative w-full h-[500px] lg:h-[650px] mt-10 lg:mt-0 perspective-1000 z-10 flex justify-center lg:justify-end">
+
+                    <!-- Decorative background ring behind mockups -->
+                    <div
+                        class="absolute top-1/2 left-1/2 lg:left-2/3 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-orange-200/50 bg-orange-50/30 backdrop-blur-3xl shadow-[inset_0_0_80px_rgba(249,115,22,0.1)] pointer-events-none">
+                    </div>
+
+                    <!-- Layer 1: Desktop Browser Mockup -->
+                    <div
+                        class="absolute top-4 lg:top-12 right-0 lg:-right-8 w-full sm:w-[90%] lg:w-[110%] aspect-[16/10] bg-white rounded-2xl shadow-[0_20px_60px_-15px_rgba(15,23,42,0.1)] border border-slate-200 overflow-hidden transform lg:-rotate-2 hover:rotate-0 transition-transform duration-700 ease-out origin-bottom-right z-10">
+                        <!-- Browser Bar -->
+                        <div
+                            class="h-12 bg-slate-50/80 backdrop-blur-sm border-b border-slate-200 flex items-center px-4 justify-between">
+                            <div class="flex gap-2">
+                                <div class="w-3 h-3 rounded-full bg-slate-300"></div>
+                                <div class="w-3 h-3 rounded-full bg-slate-300"></div>
+                                <div class="w-3 h-3 rounded-full bg-slate-300"></div>
+                            </div>
+                            <div
+                                class="flex-1 max-w-[60%] mx-auto h-7 bg-white rounded-md border border-slate-200 flex items-center justify-center px-3 shadow-sm">
+                                <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+                                    <iconify-icon icon="solar:lock-keyhole-linear"></iconify-icon> sparkweb.agency
+                                </div>
+                            </div>
+                            <div class="w-12"></div> <!-- Spacer for balance -->
+                        </div>
+
+                        <!-- Abstract Website Content -->
+                        <div class="p-6 lg:p-8 flex flex-col h-full bg-white relative">
+                            <!-- Nav skeleton -->
+                            <div class="flex justify-between items-center mb-8">
+                                <div class="w-20 h-5 bg-slate-900 rounded-sm"></div>
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-2 bg-slate-200 rounded-full"></div>
+                                    <div class="w-10 h-2 bg-slate-200 rounded-full"></div>
+                                    <div class="w-10 h-2 bg-slate-200 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <!-- Hero split skeleton -->
+                            <div class="grid grid-cols-2 gap-8 items-center h-full pb-8">
+                                <div class="space-y-5">
+                                    <div class="space-y-3">
+                                        <div class="w-full h-8 bg-slate-800 rounded-md"></div>
+                                        <div class="w-4/5 h-8 bg-slate-800 rounded-md"></div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="w-full h-2.5 bg-slate-200 rounded-full"></div>
+                                        <div class="w-full h-2.5 bg-slate-200 rounded-full"></div>
+                                        <div class="w-2/3 h-2.5 bg-slate-200 rounded-full"></div>
+                                    </div>
+                                    <div class="flex gap-3 pt-2">
+                                        <div class="w-28 h-10 bg-orange-500 rounded-lg shadow-sm shadow-orange-500/20">
+                                        </div>
+                                        <div class="w-28 h-10 border border-slate-200 rounded-lg"></div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="bg-slate-50 h-full rounded-xl border border-slate-100 flex items-center justify-center relative overflow-hidden group">
+                                    <!-- UI Element within mockup -->
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-br from-orange-50 to-slate-100 opacity-50">
+                                    </div>
+                                    <div
+                                        class="w-32 h-40 bg-white rounded-lg shadow-md border border-slate-100 p-4 flex flex-col gap-3 transform rotate-3 transition-transform group-hover:rotate-6">
+                                        <div class="w-full h-16 bg-slate-100 rounded-md mb-2"></div>
+                                        <div class="w-3/4 h-2 bg-slate-200 rounded-full"></div>
+                                        <div class="w-1/2 h-2 bg-slate-200 rounded-full"></div>
+                                    </div>
+                                    <div
+                                        class="absolute bottom-4 left-4 w-20 h-20 bg-white rounded-full shadow-lg border border-slate-100 transform -rotate-6 flex items-center justify-center">
+                                        <iconify-icon icon="solar:chart-square-linear"
+                                            class="text-orange-500 text-2xl"></iconify-icon>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Layer 2: Mobile Mockup -->
+                    <div
+                        class="absolute bottom-0 lg:-bottom-10 left-4 lg:-left-6 w-56 h-[420px] bg-white rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(15,23,42,0.2)] border-[6px] border-slate-900 overflow-hidden transform lg:rotate-3 hover:rotate-0 transition-transform duration-700 ease-out z-20">
+                        <!-- Notch area -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-900 rounded-b-2xl z-30">
+                        </div>
+
+                        <!-- Mobile Content -->
+                        <div class="p-4 pt-12 bg-slate-50 h-full flex flex-col gap-4 relative overflow-y-hidden">
+                            <!-- Header -->
+                            <div class="flex justify-between items-center mb-2">
+                                <div class="w-12 h-4 bg-slate-200 rounded-sm"></div>
+                                <div class="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center">
+                                    <iconify-icon icon="solar:hamburger-menu-linear"
+                                        class="text-slate-400 text-xs"></iconify-icon>
+                                </div>
+                            </div>
+
+                            <!-- Mobile Card -->
+                            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                                <div
+                                    class="w-12 h-12 bg-orange-100 text-orange-500 rounded-xl flex items-center justify-center mb-2">
+                                    <iconify-icon icon="solar:magic-stick-3-linear" class="text-2xl"></iconify-icon>
+                                </div>
+                                <div class="space-y-2">
+                                    <div class="w-3/4 h-4 bg-slate-800 rounded-md"></div>
+                                    <div class="w-full h-2 bg-slate-200 rounded-full"></div>
+                                    <div class="w-5/6 h-2 bg-slate-200 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <!-- List items -->
+                            <div class="space-y-2 flex-grow">
+                                <div
+                                    class="w-full h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center px-3 gap-3">
+                                    <div class="w-8 h-8 rounded-lg bg-slate-100"></div>
+                                    <div class="space-y-1.5 flex-1">
+                                        <div class="w-1/2 h-2 bg-slate-300 rounded-full"></div>
+                                        <div class="w-1/3 h-1.5 bg-slate-200 rounded-full"></div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="w-full h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center px-3 gap-3 opacity-50">
+                                    <div class="w-8 h-8 rounded-lg bg-slate-100"></div>
+                                    <div class="space-y-1.5 flex-1">
+                                        <div class="w-1/2 h-2 bg-slate-300 rounded-full"></div>
+                                        <div class="w-1/3 h-1.5 bg-slate-200 rounded-full"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Layer 3: Floating UI Chips -->
+
+                    <!-- Stats Chip -->
+                    <div class="absolute top-1/4 lg:top-32 -left-2 lg:-left-16 bg-white p-3.5 rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 z-30 flex items-center gap-3 animate-float-subtle"
+                        style="--tw-rotate: -4deg;">
+                        <div class="relative w-11 h-11 flex items-center justify-center bg-slate-50 rounded-full">
+                            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                <path class="text-slate-200" stroke-width="3" stroke="currentColor" fill="none"
+                                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="text-green-500" stroke-dasharray="100, 100" stroke-width="3"
+                                    stroke-linecap="round" stroke="currentColor" fill="none"
+                                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <span class="absolute text-xs font-semibold text-slate-700">100</span>
+                        </div>
+                        <div class="pr-2">
+                            <div class="text-xs font-semibold text-slate-800">
+                                <span class="lang-es">Rendimiento</span><span class="lang-en hidden">Performance</span>
+                            </div>
+                            <div class="text-[10px] text-slate-500">
+                                <span class="lang-es">Puntuación Lighthouse</span><span
+                                    class="lang-en hidden">Lighthouse Score</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial Chip -->
+                    <div class="absolute bottom-32 right-0 lg:-right-12 bg-slate-900 text-white p-4 rounded-2xl shadow-2xl shadow-slate-900/20 border border-slate-700 z-30 w-56 animate-float-slower"
+                        style="--tw-rotate: 3deg;">
+                        <div class="flex items-center gap-1 mb-2">
+                            <iconify-icon icon="solar:star-bold" class="text-orange-500 text-sm"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" class="text-orange-500 text-sm"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" class="text-orange-500 text-sm"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" class="text-orange-500 text-sm"></iconify-icon>
+                            <iconify-icon icon="solar:star-bold" class="text-orange-500 text-sm"></iconify-icon>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-3">
+                            <span class="lang-es">"SparkWeb transformó completamente nuestra presencia en línea. Las
+                                conversiones aumentaron un 40%."</span>
+                            <span class="lang-en hidden">"SparkWeb completely transformed our online presence.
+                                Conversions are up 40%."</span>
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-6 h-6 rounded-full bg-slate-700 flex items-center justify-center text-[9px] font-medium text-white border border-slate-600">
+                                SJ
+                            </div>
+                            <div>
+                                <div class="text-[10px] font-medium text-slate-100">Sarah Jenkins</div>
+                                <div class="text-[9px] text-slate-400">CEO, TechFlow</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Language Toggle Logic -->
+    <script>
+        function toggleLang() {
+            const thumb = document.getElementById('lang-thumb');
+            const labelEs = document.getElementById('label-es');
+            const labelEn = document.getElementById('label-en');
+            const isEn = thumb.classList.contains('translate-x-4');
+
+            const esElements = document.querySelectorAll('.lang-es');
+            const enElements = document.querySelectorAll('.lang-en');
+
+            if (isEn) {
+                // Switch to ES
+                thumb.classList.remove('translate-x-4');
+                labelEs.classList.remove('text-slate-400', 'font-medium');
+                labelEs.classList.add('text-slate-900', 'font-semibold');
+                labelEn.classList.remove('text-slate-900', 'font-semibold');
+                labelEn.classList.add('text-slate-400', 'font-medium');
+
+                esElements.forEach(el => el.classList.remove('hidden'));
+                enElements.forEach(el => el.classList.add('hidden'));
+            } else {
+                // Switch to EN
+                thumb.classList.add('translate-x-4');
+                labelEn.classList.remove('text-slate-400', 'font-medium');
+                labelEn.classList.add('text-slate-900', 'font-semibold');
+                labelEs.classList.remove('text-slate-900', 'font-semibold');
+                labelEs.classList.add('text-slate-400', 'font-medium');
+
+                esElements.forEach(el => el.classList.add('hidden'));
+                enElements.forEach(el => el.classList.remove('hidden'));
+            }
+        }
+    </script>
+</body>
+
+</html>
